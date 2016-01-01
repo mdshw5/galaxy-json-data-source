@@ -9,5 +9,5 @@
     <outputs>
         <data format="auto" name="output1" />
     </outputs>
-    <options refresh="True"/>
+    <options sanitize="False" refresh="True"/>
 </tool>

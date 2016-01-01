@@ -71,7 +71,7 @@ def metadata_to_json( dataset_id, metadata, filename, ds_type='dataset', primary
                       ext = metadata.get( 'extension' ),
                       filename = filename,
                       name = metadata.get( 'name' ),
-                      metadata = metadata.get( 'metadata' ) )
+                      metadata = metadata.get( 'metadata', {} ) )
     if metadata.get( 'extra_data', None ):
         meta_dict[ 'extra_files' ] = '_'.join( [ filename, 'files' ] )
     if primary:
@@ -98,13 +98,13 @@ def download_files_and_write_metadata(query_item, json_params, output_base_path,
         target_output_filename = os.path.normpath( '/'.join( [ output_base_path, name ] ) )
         metadata_parameter_file.write( metadata_to_json( dataset_id, query_item,
                                                          target_output_filename,
-                                                         ds_type='new_primary_dataset'
+                                                         ds_type='new_primary_dataset',
                                                          primary=primary) )
     else:
         target_output_filename = output_filename
         metadata_parameter_file.write( metadata_to_json( dataset_id, query_item,
                                                          target_output_filename,
-                                                         ds_type='dataset'
+                                                         ds_type='dataset',
                                                          primary=primary) )
     download_from_query( query_item, target_output_filename )
     if extra_data:
