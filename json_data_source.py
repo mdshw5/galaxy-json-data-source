@@ -6,6 +6,7 @@ import os.path
 import os
 from operator import itemgetter
 
+__version__ = "1.0.0"
 CHUNK_SIZE = 2**20 #1mb
 VALID_CHARS = '.-()[]0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '
 
@@ -186,9 +187,14 @@ def __main__():
                     action="store", dest="json_param_file", help="json schema return data")
     parser.add_option("-p", "--path", type="string",
                     action="store", dest="path", help="new file path")
+    parser.add_option("-v", "--version", action="store_true", dest="version",
+                      default=False, help="display version and exit")
 
     (options, args) = parser.parse_args()
-    download_from_json_data( options, args )
+    if options.version:
+        print __version__
+    else:
+        download_from_json_data( options, args )
 
 
 if __name__ == "__main__": __main__()
