@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <tool name="JSON data source" id="json_data_source" tool_type="data_source" hidden="True" display_interface="False" version="1.0.0" force_history_refresh="True">
     <description> - parse and download data and metadata from a JSON response</description>
+    <version_command>python json_data_source.py --version</version_command>
     <command interpreter="python">json_data_source.py $__app__.config.output_size_limit --json_param_file "${output1}" --path "."</command>
     <inputs check_values="False">
-        <!-- <param name="file_name" type="text" value="" /> -->
         <param name="URL" type="hidden" value="" />
     </inputs>
     <outputs>
